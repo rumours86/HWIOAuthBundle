@@ -69,6 +69,18 @@ class OAuthToken extends AbstractToken
 
         parent::setAuthenticated(count($roles) > 0);
     }
+    
+    /**
+     * @param string $role Role for the token
+     */
+    public function addRole($role)
+    {
+        if (!in_array($role, $this->roles))
+        {
+            $this->roles[] = $role;
+        }
+        return $this;
+    }
 
     /**
      * {@inheritdoc}
